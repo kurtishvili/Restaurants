@@ -1,0 +1,94 @@
+@Restaurants.API_HostAddress = https://localhost:7005
+@token = CfDJ8H5qBllRvKlBisTDrOCmeBpx8fK4LGU9rcSkuFOp2bnAeOhaeWxrVHVkPVyOzjUoD6xBUtfo7qCahcXDAYd-RH7JbMSXaDoBTGSU3fGtu1GjTmUds_Dp2mUIGg0qW_nqj7Rq6T5RVqS_WKD1yH_0CU-NvQn2pTAIdSmWOKjcjHYFgk-SLnqA77P3hEyKYwpZhagMsXQhGCB4EWs3ZKO8QtRhAlIoHcE-iPbSfNhtc-fn1yWlbvM8O8whI8c6J8-UCfFs-j6W0mfMPVq0PXrF13Z8upqEvf6k_29mEKbAgWBSwn3nRtheGbtL3ssxcvalS5lY3pEZeNiUO0nM9QtWJ8TVrvhE0v_BbsUrTTv6fZj890IINSCW5FN1wOfP_dNsyPis1rGUkuSzCdByU5YF3Z3FDfv1602UhwNNqyDs6wwaekHvAiJwpaZPaK0RKth5UP1vpXOPT-flwJEOtsXuZZZxWHkEEvRsP82SOcbnhMp0x_wmTGSsHWx_-Ru4OVE7pWubOGn5fv7mCranmpPEGRssD7Pe7Ur9NWvUBS3lLFnKRDozUX-377ri71EKveND1-gOpBSZISZF7B6Bn_l_5cKmpLvj1vtkoXI_6iylnaPBRqjybkwFfpx_ZIAy_cCQA16gTd7AI9Dw7yZ2e2lz0mrAqPlTseuHI8mSRPb4H-v0W0yuh80VlvalXjGzZfTsrjc5pTFbVS-m2RC9ykLXx4laqj0v0C2ok9yj81yfaMMO-YX1dg8QP9iGSOlGRpxsY1RNz0UtqZTMGhdLXoYoYheo7R8T3tXZR_v9gphnkXIN
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3
+Authorization: Bearer {{token}}
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes/4
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Owner Role Restaurant",
+  "Description": "This is a sample restaurant description.",
+  "Category": "Sample Category",
+  "HasDelivery": true,
+  "ContactEmail": "sample@example.com",
+  "ContactNumber": "123-456-7890",
+  "City": "Sample City",
+  "Street": "Sample Street",
+  "PostalCode": "12345"
+}
+
+###
+
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/121488
+
+###
+
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/2004
+Content-Type: application/json
+
+{
+    
+    "Name": "Sample Restaurant",
+    "Description": "This is a sample restaurant description.",
+    "HasDelivery": false
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat souce",
+  "Price": 25,
+  "KiloCalories": 750
+}
+
+###
+
+Delete {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "test@gmail.com",
+  "password": "Password1!"
+}
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "password": "Password1!"
+}
+###
