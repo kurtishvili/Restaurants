@@ -19,10 +19,11 @@ namespace Restaurants.API.Controllers
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<RestaurantDto>))]
-        [Authorize(Policy = PolicyNames.CreatedAtLeast2Restaurants)]
-        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        [AllowAnonymous]
+        //[Authorize(Policy = PolicyNames.CreatedAtLeast2Restaurants)]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllRestaurantsQuery query, CancellationToken cancellationToken)
         {
-            var restaurants = await mediator.Send(new GetAllRestaurantsQuery(), cancellationToken);
+            var restaurants = await mediator.Send(query, cancellationToken);
 
             return Ok(restaurants);
         }
