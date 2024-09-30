@@ -1,0 +1,118 @@
+@Restaurants.API_HostAddress = https://localhost:7005
+@token = CfDJ8H5qBllRvKlBisTDrOCmeBqAmFe6cRcsz1h75D7wgbcOrJF4aE36YwUlfPevhqSRfT1-ZXJPBs0kDPEEYVPOf4oq7iUp4xSIZyPM7oHP5u0zcfqYb9jr7KmMqcBuudkxHH8vFPrLMtYyPc1gSwD1_KWUZJajioF4E__a0jvYySEMsdPnovetLqOSfortBWEdzOS9drPmJBx2Jdn0fC4PYq55wbU5kragK47OhNy2zmmm2YWG7GpCTUzqGlInPynLcNkmKwX0A1bE58mpLpi_SxpyXDlxj7ge04zofpePVo_QBUYz7DRD1f59EGv3fARofSGhLyEQnBN_TjOBgDuDjY-WoZueHelm1l01D1KjeN8uQqCfwNekr7FpttoUGXjxzs2Os3Eqj3-k3ORVD3wDcb-9wn-Mi-IIprT9dLDRCG5ceK2BRd8j56g80gKXlFGOeVAkvPKNE39KuFTy3OEH1GyBfvVCBeCsQCQTZkKrR0e1RULCPVu9wGU8CZmViYIuxlql955uhPjgxGbOu40URf_IIH4bpEHwzeJgTkAUs65lafZGxixyEs96OUiG_R2HWL4WoIfSQFVSjEgeclDwllT7ECv1UlM3Qy6EqwA4WYRfW63m28Bn2UNL2bw7lG8fK8ARoBazTzSwSAaq0hJRdC5G9nXnz4LzntTeW2G_R4TqVaKHzvSncnzZKk591VFL_Na474JQN-6o5XskptmzPby0j0uZti6mrOxFrNStfrXXD15CdjxOwoskOw45PIHZkjdYQ-DznYUs6XzmvUpZUf27_KbFXYRuUkOAdf4z79yI
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants?SearchPhrase&pageSize=10&pageNumber=1&sortBy=Name&sortDirection=Descending
+Authorization: Bearer {{token}}
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+Authorization: Bearer {{token}}
+
+###
+
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Authorization: Bearer {{token}}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "Name": "Owner2 Restaurant2",
+  "Description": "This is a sample restaurant description.",
+  "Category": "Sample Category",
+  "HasDelivery": true,
+  "ContactEmail": "sample@example.com",
+  "ContactNumber": "123-456-7890",
+  "City": "Sample City",
+  "Street": "Sample Street",
+  "PostalCode": "12345"
+}
+
+###
+
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/121488
+
+###
+
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/2004
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    
+    "Name": "Sample Restaurant 2",
+    "Description": "This is a sample restaurant description.",
+    "HasDelivery": false,
+    "Category": "Fast Food"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat souce",
+  "Price": 25,
+  "KiloCalories": 750
+}
+
+###
+
+Delete {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Content-Type: application/json
+
+{
+  
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "owner2@gmail.com",
+  "password": "Password1!"
+}
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "owner2@gmail.com",
+  "password": "Password1!"
+}
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Nationality": "French",
+  "DateOfBirth": "2010-01-01"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/userRole
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "UserEmail": "owner2@gmail.com",
+  "RoleName"": "Owner"
+}
+
+###
