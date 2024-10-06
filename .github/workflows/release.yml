@@ -24,7 +24,7 @@ jobs:
       - name: Publish
         run: dotnet publish ./src/Restaurants.API/Restaurants.API.csproj -o ${{env.DOTNET_ROOT}}/api --no-build
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3.2.1-node20
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: api-artifact
           path: ${{env.DOTNET_ROOT}}/api 
@@ -34,11 +34,11 @@ jobs:
     needs: build
     steps: 
       - name: Download a Build Artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v4.1.3
         with:  
-          name: api-artifact
+          name: api-artifact          
       - name: Azure WebApp
-        uses: Azure/webapps-deploy@v3.0.1
+        uses: Azure/webapps-deploy@v3.0.0
         with:
           app-name: 'GK-restaurants-api-dev'
           publish-profile: ${{secrets.PUBLISH_PROFILE_DEV}}
