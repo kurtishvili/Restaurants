@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
+using Restaurants.Application.Restaurants.Commands.UploadRestaurantLogo;
 using Restaurants.Application.Restaurants.Dtos;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 using Restaurants.Domain.Constants;
-using Restaurants.Infrastructure.Authorization;
 
 namespace Restaurants.API.Controllers
 {
@@ -29,7 +29,6 @@ namespace Restaurants.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Policy = PolicyNames.HasNationality)]
         public async Task<IActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
         {
             var restaurant = await mediator.Send(new GetRestaurantByIdQuery(id), cancellationToken);
@@ -44,6 +43,23 @@ namespace Restaurants.API.Controllers
             var id = await mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id }, null);
+        }
+
+        [HttpPost("{id}/logo")]
+        public async Task<IActionResult> UploadLogo([FromRoute] int id, IFormFile file, CancellationToken cancellationToken)
+        {
+            using var steram = file.OpenReadStream();
+
+            var command = new UploadRestaurantLogoCommand()
+            {
+                RestaunratId = id,
+                FileName = $"{id}-file.FileName",
+                File = steram
+            };
+
+            await mediator.Send(command);
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

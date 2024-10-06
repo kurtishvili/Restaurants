@@ -21,5 +21,7 @@ namespace Restaurants.Application.Restaurants.Dtos
         public string? PostalCode { get; set; }
 
         public List<DishDto> Dishes { get; set; } = [];
+
+        public string? LogoSasUrl { get; set; }
     }
 }
